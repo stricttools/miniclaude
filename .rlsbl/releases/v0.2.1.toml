@@ -24,3 +24,7 @@ so the dependency can never resolve below the version the fix needs.
 # blog = false
 include = ["pypi", "npm"]
 exclude = []
+candidate_sha = "8ee867e2be856794d47da1206b74620f7e4d992b"
+
+[tree_hashes]
+"." = "98f7323f3d8f2839e6439f995c760ef3f07cc510"

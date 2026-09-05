@@ -1,3 +1,5 @@
+# strictspec document version gate (do not remove)
+format_version = 1
 # Version bump type: patch, minor, major, infra, or prerelease
 bump = "minor"
 # Short description of this release (required)
@@ -16,3 +18,7 @@ line. Mock mode was added to exercise the TUI without a live Claude session.
 # blog = false
 include = ["pypi", "npm"]
 exclude = []
+candidate_sha = "f7d73b53800d137328ae73a315ac3ccdea30150e"
+
+[tree_hashes]
+"." = "dc52f7eb2cf79cb4857c316865ab6bcb44d3c385"

@@ -35,3 +35,7 @@ that does not parse.
 # blog = false
 include = ["pypi", "npm"]
 exclude = []
+candidate_sha = "ab2182981a90667e92ca3568307f42dff8652f37"
+
+[tree_hashes]
+"." = "3d25d4588e17e3102fe21f044c3e6959a3896b88"
