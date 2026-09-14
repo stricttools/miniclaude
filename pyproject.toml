@@ -1,7 +1,7 @@
 [project]
 name = "miniclaude"
 version = "0.3.0"
-description = "A lean, snappy fullscreen terminal client for Claude Code"
+description = "A lean, fullscreen terminal client for Claude Code that drives the official claude CLI and renders streaming markdown, tool activity and permission prompts in a scrollable alternate-screen REPL"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
@@ -16,12 +16,27 @@ dependencies = [
     "strictcli>=0.41.1",
     "prompt-toolkit",
 ]
-keywords = ["rlsbl"]
+keywords = [
+    "claude",
+    "claude-code",
+    "cli",
+    "terminal",
+    "tui",
+    "repl",
+    "prompt-toolkit",
+    "rlsbl",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+    "Environment :: Console",
+]
 
 [project.urls]
 Homepage = "https://github.com/smm-h/miniclaude"
 Repository = "https://github.com/smm-h/miniclaude"
 Issues = "https://github.com/smm-h/miniclaude/issues"
+Changelog = "https://github.com/smm-h/miniclaude/blob/main/CHANGELOG.md"
 
 [project.scripts]
 miniclaude = "miniclaude._cli:main"

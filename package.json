@@ -1,7 +1,7 @@
 {
   "name": "miniclaude",
   "version": "0.3.0",
-  "description": "A lean, snappy fullscreen terminal client for Claude Code - CLI wrapper for the Python miniclaude package",
+  "description": "A lean, fullscreen terminal client for Claude Code that drives the official claude CLI and renders streaming markdown, tool activity and permission prompts in a scrollable alternate-screen REPL (npm wrapper for the Python package)",
   "bin": {
     "miniclaude": "./bin/miniclaude.mjs"
   },
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/smm-h/miniclaude"
   },
-  "homepage": "https://github.com/smm-h/miniclaude#readme",
+  "homepage": "https://github.com/smm-h/miniclaude",
   "bugs": {
     "url": "https://github.com/smm-h/miniclaude/issues"
   },
@@ -21,6 +21,7 @@
     "cli",
     "terminal",
     "tui",
+    "repl",
     "rlsbl"
   ],
   "engines": {
