@@ -30,7 +30,7 @@ def _get_version() -> str:
 app = strictcli.App(
     name="miniclaude",
     version=_get_version(),
-    help="A lean, snappy fullscreen terminal client for Claude Code",
+    help="Less is more: Claude Code minus the bloatware and the bullshit",
 )
 
 

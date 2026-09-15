@@ -1,6 +1,8 @@
 # miniclaude
 
-miniclaude is a lean, fullscreen terminal client for Claude Code that drives the official claude CLI and renders streaming markdown, tool activity and permission prompts in a scrollable alternate-screen REPL. It is for developers who want a minimal alternative frontend to the official Claude Code TUI. It replaces only the presentation layer — tools, permissions, sessions and authentication all come from the real `claude` CLI, driven through the [claudestream](https://pypi.org/project/claudestream/) library.
+Less is more: Claude Code minus the bloatware and the bullshit.
+
+It is for developers who want a minimal alternative frontend to the official Claude Code TUI. It replaces only the presentation layer — tools, permissions, sessions and authentication all come from the real `claude` CLI, driven through the [claudestream](https://pypi.org/project/claudestream/) library.
 
 ## Design stance
 

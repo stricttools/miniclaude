@@ -83,7 +83,7 @@
   "project_id": "miniclaude",
   "name": "miniclaude",
   "version": "0.3.0",
-  "help": "A lean, snappy fullscreen terminal client for Claude Code",
+  "help": "Less is more: Claude Code minus the bloatware and the bullshit",
   "commands": {
     "version": {
       "name": "version",

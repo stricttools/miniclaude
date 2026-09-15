@@ -1,3 +1,3 @@
-"""A lean, snappy fullscreen terminal client for Claude Code, built on the claudestream library."""
+"""Less is more: Claude Code minus the bloatware and the bullshit."""
 
 __version__ = "0.3.0"

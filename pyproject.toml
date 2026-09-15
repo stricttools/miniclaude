@@ -1,7 +1,7 @@
 [project]
 name = "miniclaude"
 version = "0.3.0"
-description = "A lean, fullscreen terminal client for Claude Code that drives the official claude CLI and renders streaming markdown, tool activity and permission prompts in a scrollable alternate-screen REPL"
+description = "Less is more: Claude Code minus the bloatware and the bullshit"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
