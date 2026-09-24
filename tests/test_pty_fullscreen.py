@@ -1,14 +1,14 @@
-"""Offline pty tests for the fullscreen REPL (Phase 3).
+"""Offline pty tests for the fullscreen REPL.
 
 Spawns ``miniclaude mock`` inside a pseudo-terminal and drives it through the
 fullscreen (alternate-screen) TUI:
 
 - The layout anchors the input frame to the bottom with the 3-row howmuchleft
-  status bar beneath it and no dead rows below (3.2).
-- The seed line is emitted as the intro and is visible in the session (3.2).
-- ``table``/``help``/``demo`` turns render without "Window too small" (3.2).
+  status bar beneath it and no dead rows below.
+- The seed line is emitted as the intro and is visible in the session.
+- ``table``/``help``/``demo`` turns render without "Window too small".
 - A ``dialogs`` turn suspends the app for the permission prompt and returns to
-  fullscreen after the prompt is answered (3.2).
+  fullscreen after the prompt is answered.
 
 Marked ``pty`` so it gates only on pty availability (see conftest). Dimensions
 are rows x cols.

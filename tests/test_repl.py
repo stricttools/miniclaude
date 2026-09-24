@@ -829,7 +829,7 @@ async def test_result_updates_hml_state():
     assert repl._ctx_pct == 25  # (200+50)/1000 = 25%
 
 
-# --- Output block model (Phase 4a) -------------------------------------------
+# --- Output block model ------------------------------------------------------
 
 
 def test_output_block_accumulation():
@@ -921,7 +921,7 @@ def test_render_table_width_independence():
         assert "Score" in full
 
 
-# --- Phase 3: block-backed output path (3.1) ---------------------------------
+# --- Block-backed output path ------------------------------------------------
 
 
 def _mk_controller():
@@ -1019,7 +1019,7 @@ def test_content_line_count_matches_materialized_newlines():
     assert ctrl._content_line_count() == expected == 3
 
 
-# --- Phase 3: bottom detection (3.1) -----------------------------------------
+# --- Bottom detection --------------------------------------------------------
 
 
 class _FakeRenderInfo:
@@ -1062,7 +1062,7 @@ def test_bottom_detection_no_render_info_is_bottom():
     assert _render_info_at_bottom(_FakeRenderInfo(0, 0)) is True
 
 
-# --- Phase 3: scroll-lock + burst coalescing (3.3) ---------------------------
+# --- Scroll-lock + burst coalescing ------------------------------------------
 
 
 class _FakeClock:
