@@ -33,10 +33,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/smm-h/miniclaude"
-Repository = "https://github.com/smm-h/miniclaude"
-Issues = "https://github.com/smm-h/miniclaude/issues"
-Changelog = "https://github.com/smm-h/miniclaude/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/stricttools/miniclaude"
+Repository = "https://github.com/stricttools/miniclaude"
+Issues = "https://github.com/stricttools/miniclaude/issues"
+Changelog = "https://github.com/stricttools/miniclaude/blob/main/CHANGELOG.md"
 
 [project.scripts]
 miniclaude = "miniclaude._cli:main"
