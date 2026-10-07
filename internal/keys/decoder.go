@@ -27,14 +27,23 @@ type chunk struct {
 // A read cannot be interrupted, so after Stop the reading goroutine stays
 // blocked in its read until the next byte arrives or the process exits; it
 // delivers nothing after Stop.
-func Start(r io.Reader) *Decoder {
+//
+// guard is deferred first in each of the decoder's goroutines, so the caller
+// can restore the terminal when one of them panics (the terminal's Guard).
+func Start(r io.Reader, guard func()) *Decoder {
 	d := &Decoder{
 		events: make(chan Event, 64),
 		done:   make(chan struct{}),
 	}
 	chunks := make(chan chunk)
-	go d.read(r, chunks)
-	go d.decode(chunks)
+	go func() {
+		defer guard()
+		d.read(r, chunks)
+	}()
+	go func() {
+		defer guard()
+		d.decode(chunks)
+	}()
 	return d
 }
 

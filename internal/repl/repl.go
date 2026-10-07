@@ -207,7 +207,7 @@ func Run(cfg Config) (outcome Outcome, err error) {
 		c.out.Print(dim(cfg.Intro) + "\n")
 	}
 
-	c.dec = keys.Start(cfg.In)
+	c.dec = keys.Start(cfg.In, t.Guard)
 	go func() {
 		defer t.Guard()
 		c.status.Run()

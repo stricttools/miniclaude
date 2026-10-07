@@ -87,6 +87,7 @@ func Open(in, out *os.File) (*Terminal, error) {
 // notification that is still unread absorbs later ones, so a burst of
 // signals while the controller is busy becomes one redraw.
 func (t *Terminal) forwardResizes() {
+	defer t.Guard()
 	for {
 		select {
 		case <-t.done:
