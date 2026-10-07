@@ -58,7 +58,7 @@ func ContextPercent(usage map[string]ModelUsage, model string) (int, bool) {
 
 // percent is 100*part/whole rounded to the nearest integer, halves to even.
 func percent(part, whole int64) int {
-	return int(math.RoundToEven(100*float64(part)/float64(whole)))
+	return int(math.RoundToEven(100 * float64(part) / float64(whole)))
 }
 
 // Result is the part of a turn's result the closing line reports.
@@ -123,12 +123,12 @@ func ContextListing(u ContextUsage) string {
 	var b strings.Builder
 	for _, c := range u.Categories {
 		name := c.Name + strings.Repeat(" ", width-utf8.RuneCountInString(c.Name))
-		b.WriteString(dim(fmt.Sprintf("  %s  %d", name, c.Tokens))+"\n")
+		b.WriteString(dim(fmt.Sprintf("  %s  %d", name, c.Tokens)) + "\n")
 	}
 	pct := 0
 	if u.MaxTokens != 0 {
 		pct = percent(u.TotalTokens, u.MaxTokens)
 	}
-	b.WriteString(dim(fmt.Sprintf("  total %d/%d (%d%%)", u.TotalTokens, u.MaxTokens, pct))+"\n")
+	b.WriteString(dim(fmt.Sprintf("  total %d/%d (%d%%)", u.TotalTokens, u.MaxTokens, pct)) + "\n")
 	return b.String()
 }

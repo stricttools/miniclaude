@@ -144,7 +144,7 @@ func styleInline(s string) string {
 		switch {
 		case c == '`':
 			if end := indexRune(rs, '`', i+1); end != -1 {
-				b.WriteString(Cyan+string(rs[i+1:end])+Reset)
+				b.WriteString(Cyan + string(rs[i+1:end]) + Reset)
 				i = end + 1
 				continue
 			}
@@ -152,22 +152,22 @@ func styleInline(s string) string {
 			closing := indexRune(rs, ']', i+1)
 			if closing != -1 && closing+1 < n && rs[closing+1] == '(' {
 				if urlEnd := indexRune(rs, ')', closing+2); urlEnd != -1 {
-					text := string(rs[i+1:closing])
-					url := string(rs[closing+2:urlEnd])
-					b.WriteString(Underline+text+Reset+" ("+Dim+url+Reset+")")
+					text := string(rs[i+1 : closing])
+					url := string(rs[closing+2 : urlEnd])
+					b.WriteString(Underline + text + Reset + " (" + Dim + url + Reset + ")")
 					i = urlEnd + 1
 					continue
 				}
 			}
 		case hasDoubleStar(rs, i):
 			if end := indexDoubleStar(rs, i+2); end != -1 {
-				b.WriteString(Bold+string(rs[i+2:end])+Reset)
+				b.WriteString(Bold + string(rs[i+2:end]) + Reset)
 				i = end + 2
 				continue
 			}
 		case c == '*' || c == '_':
 			if end := indexRune(rs, c, i+1); end != -1 && end > i+1 {
-				b.WriteString(Italic+string(rs[i+1:end])+Reset)
+				b.WriteString(Italic + string(rs[i+1:end]) + Reset)
 				i = end + 1
 				continue
 			}

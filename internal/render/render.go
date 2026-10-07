@@ -131,7 +131,7 @@ func (r *Renderer) switchToThinking() {
 		}
 		r.flushTable()
 	}
-	r.emit(Dim+"✻ thinking"+Reset+"\n")
+	r.emit(Dim + "✻ thinking" + Reset + "\n")
 	r.mode = modeThinking
 }
 
@@ -155,7 +155,7 @@ func (r *Renderer) drain() {
 
 // thinkingLine renders a thinking line dim gray, without markdown.
 func (r *Renderer) thinkingLine(line string) {
-	r.emit(Thinking+line+Reset+"\n")
+	r.emit(Thinking + line + Reset + "\n")
 }
 
 // textLine renders one line of prose.
@@ -166,7 +166,7 @@ func (r *Renderer) textLine(line string) {
 			// The closing fence ends any table read inside the block.
 			r.flushTable()
 			r.inCode = false
-			r.emit(Dim+line+Reset+"\n")
+			r.emit(Dim + line + Reset + "\n")
 			return
 		}
 		// Models often put markdown tables inside fences; they are drawn
@@ -176,13 +176,13 @@ func (r *Renderer) textLine(line string) {
 			return
 		}
 		// Code is indented two spaces and not parsed.
-		r.emit("  "+line+"\n")
+		r.emit("  " + line + "\n")
 		return
 	}
 	if strings.HasPrefix(stripped, "```") {
 		r.flushTable()
 		r.inCode = true
-		r.emit(Dim+line+Reset+"\n")
+		r.emit(Dim + line + Reset + "\n")
 		return
 	}
 	if strings.HasPrefix(stripped, "|") {
