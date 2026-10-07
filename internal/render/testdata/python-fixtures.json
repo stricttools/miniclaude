@@ -1,0 +1,402 @@
+[
+  {
+    "name": "prose_inline",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "# Big Title\n\nSome **bold**, *italic*, _under_, `code`, and a [link](http://example.com) here.\n\n## Subhead\n\nplain tail\n"
+      ]
+    ],
+    "output": "\u001b[1m\u001b[4mBig Title\u001b[0m\n\nSome \u001b[1mbold\u001b[0m, \u001b[3mitalic\u001b[0m, \u001b[3munder\u001b[0m, \u001b[36mcode\u001b[0m, and a \u001b[4mlink\u001b[0m (\u001b[2mhttp://example.com\u001b[0m) here.\n\n\u001b[1mSubhead\u001b[0m\n\nplain tail\n"
+  },
+  {
+    "name": "prose_inline",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "# Big Title\n\nSome **bold**, *italic*, _under_, `code`, and a [link](http://example.com) here.\n\n## Subhead\n\nplain tail\n"
+      ]
+    ],
+    "output": "\u001b[1m\u001b[4mBig Title\u001b[0m\n\nSome \u001b[1mbold\u001b[0m, \u001b[3mitalic\u001b[0m, \u001b[3munder\u001b[0m, \u001b[36mcode\u001b[0m, and a \u001b[4mlink\u001b[0m (\u001b[2mhttp://example.com\u001b[0m) here.\n\n\u001b[1mSubhead\u001b[0m\n\nplain tail\n"
+  },
+  {
+    "name": "lists",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "- one\n- two\n* star\n1. first\n2. second\nnot a list\n"
+      ]
+    ],
+    "output": "\u001b[2m\u2022 \u001b[0mone\n\u001b[2m\u2022 \u001b[0mtwo\n\u001b[2m\u2022 \u001b[0mstar\n1. first\n2. second\nnot a list\n"
+  },
+  {
+    "name": "lists",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "- one\n- two\n* star\n1. first\n2. second\nnot a list\n"
+      ]
+    ],
+    "output": "\u001b[2m\u2022 \u001b[0mone\n\u001b[2m\u2022 \u001b[0mtwo\n\u001b[2m\u2022 \u001b[0mstar\n1. first\n2. second\nnot a list\n"
+  },
+  {
+    "name": "code_fence",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "before\n\n```python\n**not bold** and `not code`\nx = [a](b)\n```\n\nafter\n"
+      ]
+    ],
+    "output": "before\n\n\u001b[2m```python\u001b[0m\n  **not bold** and `not code`\n  x = [a](b)\n\u001b[2m```\u001b[0m\n\nafter\n"
+  },
+  {
+    "name": "code_fence",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "before\n\n```python\n**not bold** and `not code`\nx = [a](b)\n```\n\nafter\n"
+      ]
+    ],
+    "output": "before\n\n\u001b[2m```python\u001b[0m\n  **not bold** and `not code`\n  x = [a](b)\n\u001b[2m```\u001b[0m\n\nafter\n"
+  },
+  {
+    "name": "table_by_prose",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| Name | Age |\n| --- | --- |\n| Alice | 30 |\n| Bob | 5 |\nafter table\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mName\u001b[0m  \u2502 \u001b[1mAge\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 Alice \u2502 30  \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Bob   \u2502 5   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2518\nafter table\n"
+  },
+  {
+    "name": "table_by_prose",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| Name | Age |\n| --- | --- |\n| Alice | 30 |\n| Bob | 5 |\nafter table\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mName\u001b[0m  \u2502 \u001b[1mAge\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 Alice \u2502 30  \u2502\n\u251c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2524\n\u2502 Bob   \u2502 5   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2518\nafter table\n"
+  },
+  {
+    "name": "table_by_finish",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| Left | Center | Right |\n| :--- | :---: | ---: |\n| a | bb | ccc |"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mLeft\u001b[0m \u2502 \u001b[1mCenter\u001b[0m \u2502 \u001b[1mRight\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 a    \u2502   bb   \u2502   ccc \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_by_finish",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| Left | Center | Right |\n| :--- | :---: | ---: |\n| a | bb | ccc |"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mLef\u001b[0m \u2502 \u001b[1mCenter\u001b[0m \u2502 \u001b[1mRight\u001b[0m \u2502\n\u2502 \u001b[1mt\u001b[0m   \u2502        \u2502       \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 a   \u2502   bb   \u2502   ccc \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_styled_cells",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| Feature | Note |\n| --- | --- |\n| **fast** | `x` |\nend\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mFeature\u001b[0m \u2502 \u001b[1mNote\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 \u001b[1mfast\u001b[0m    \u2502 \u001b[36mx\u001b[0m    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2518\nend\n"
+  },
+  {
+    "name": "table_styled_cells",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| Feature | Note |\n| --- | --- |\n| **fast** | `x` |\nend\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mFeature\u001b[0m \u2502 \u001b[1mNote\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 \u001b[1mfast\u001b[0m    \u2502 \u001b[36mx\u001b[0m    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2518\nend\n"
+  },
+  {
+    "name": "thinking_only",
+    "width": 80,
+    "segments": [
+      [
+        "thinking",
+        "considering the options\nweighing tradeoffs\n"
+      ]
+    ],
+    "output": "\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90mconsidering the options\u001b[0m\n\u001b[2;90mweighing tradeoffs\u001b[0m\n"
+  },
+  {
+    "name": "thinking_only",
+    "width": 24,
+    "segments": [
+      [
+        "thinking",
+        "considering the options\nweighing tradeoffs\n"
+      ]
+    ],
+    "output": "\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90mconsidering the options\u001b[0m\n\u001b[2;90mweighing tradeoffs\u001b[0m\n"
+  },
+  {
+    "name": "transitions",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "opening line\n"
+      ],
+      [
+        "thinking",
+        "let me think\nmore thought\n"
+      ],
+      [
+        "text",
+        "final answer\n"
+      ],
+      [
+        "thinking",
+        "second thought\n"
+      ],
+      [
+        "text",
+        "done\n"
+      ]
+    ],
+    "output": "opening line\n\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90mlet me think\u001b[0m\n\u001b[2;90mmore thought\u001b[0m\n\nfinal answer\n\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90msecond thought\u001b[0m\n\ndone\n"
+  },
+  {
+    "name": "transitions",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "opening line\n"
+      ],
+      [
+        "thinking",
+        "let me think\nmore thought\n"
+      ],
+      [
+        "text",
+        "final answer\n"
+      ],
+      [
+        "thinking",
+        "second thought\n"
+      ],
+      [
+        "text",
+        "done\n"
+      ]
+    ],
+    "output": "opening line\n\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90mlet me think\u001b[0m\n\u001b[2;90mmore thought\u001b[0m\n\nfinal answer\n\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90msecond thought\u001b[0m\n\ndone\n"
+  },
+  {
+    "name": "unclosed",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "**bold and *ital and `code and [link\nnext line\n"
+      ]
+    ],
+    "output": "*\u001b[3mbold and \u001b[0mital and `code and [link\nnext line\n"
+  },
+  {
+    "name": "unclosed",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "**bold and *ital and `code and [link\nnext line\n"
+      ]
+    ],
+    "output": "*\u001b[3mbold and \u001b[0mital and `code and [link\nnext line\n"
+  },
+  {
+    "name": "partial_no_newline",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "no trailing newline here"
+      ]
+    ],
+    "output": "no trailing newline here\n"
+  },
+  {
+    "name": "partial_no_newline",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "no trailing newline here"
+      ]
+    ],
+    "output": "no trailing newline here\n"
+  },
+  {
+    "name": "everything",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "# Title\n\nintro **b** *i* `c` [l](u)\n\n- a\n- b\n\n"
+      ],
+      [
+        "thinking",
+        "hidden reasoning\nstep two\n"
+      ],
+      [
+        "text",
+        "## Results\n\n```sh\necho **x**\n```\n\n| K | V |\n| --- | --- |\n| 1 | 2 |\ntail\n"
+      ]
+    ],
+    "output": "\u001b[1m\u001b[4mTitle\u001b[0m\n\nintro \u001b[1mb\u001b[0m \u001b[3mi\u001b[0m \u001b[36mc\u001b[0m \u001b[4ml\u001b[0m (\u001b[2mu\u001b[0m)\n\n\u001b[2m\u2022 \u001b[0ma\n\u001b[2m\u2022 \u001b[0mb\n\n\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90mhidden reasoning\u001b[0m\n\u001b[2;90mstep two\u001b[0m\n\n\u001b[1mResults\u001b[0m\n\n\u001b[2m```sh\u001b[0m\n  echo **x**\n\u001b[2m```\u001b[0m\n\n\u250c\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mK\u001b[0m \u2502 \u001b[1mV\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2561\n\u2502 1 \u2502 2 \u2502\n\u2514\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2518\ntail\n"
+  },
+  {
+    "name": "everything",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "# Title\n\nintro **b** *i* `c` [l](u)\n\n- a\n- b\n\n"
+      ],
+      [
+        "thinking",
+        "hidden reasoning\nstep two\n"
+      ],
+      [
+        "text",
+        "## Results\n\n```sh\necho **x**\n```\n\n| K | V |\n| --- | --- |\n| 1 | 2 |\ntail\n"
+      ]
+    ],
+    "output": "\u001b[1m\u001b[4mTitle\u001b[0m\n\nintro \u001b[1mb\u001b[0m \u001b[3mi\u001b[0m \u001b[36mc\u001b[0m \u001b[4ml\u001b[0m (\u001b[2mu\u001b[0m)\n\n\u001b[2m\u2022 \u001b[0ma\n\u001b[2m\u2022 \u001b[0mb\n\n\u001b[2m\u273b thinking\u001b[0m\n\u001b[2;90mhidden reasoning\u001b[0m\n\u001b[2;90mstep two\u001b[0m\n\n\u001b[1mResults\u001b[0m\n\n\u001b[2m```sh\u001b[0m\n  echo **x**\n\u001b[2m```\u001b[0m\n\n\u250c\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mK\u001b[0m \u2502 \u001b[1mV\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2561\n\u2502 1 \u2502 2 \u2502\n\u2514\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2518\ntail\n"
+  },
+  {
+    "name": "table_emoji",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| \ud83c\udfb8 | hello | \ud83e\udd8b\ud83c\udf3b |\n| --- | --- | --- |\n| a | world | x |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1m\ud83c\udfb8\u001b[0m \u2502 \u001b[1mhello\u001b[0m \u2502 \u001b[1m\ud83e\udd8b\ud83c\udf3b\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 a  \u2502 world \u2502 x    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_emoji",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| \ud83c\udfb8 | hello | \ud83e\udd8b\ud83c\udf3b |\n| --- | --- | --- |\n| a | world | x |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1m\ud83c\udfb8\u001b[0m \u2502 \u001b[1mhello\u001b[0m \u2502 \u001b[1m\ud83e\udd8b\ud83c\udf3b\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 a  \u2502 world \u2502 x    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_mixed_content",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| **bold** | \ud83c\udfb8music |\n| --- | --- |\n| normal | data |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1m\u001b[1mbold\u001b[0m\u001b[0m   \u2502 \u001b[1m\ud83c\udfb8music\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 normal \u2502 data    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_mixed_content",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| **bold** | \ud83c\udfb8music |\n| --- | --- |\n| normal | data |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1m\u001b[1mbold\u001b[0m\u001b[0m   \u2502 \u001b[1m\ud83c\udfb8music\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 normal \u2502 data    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_inside_code_fence",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "```\n| A | B |\n| - | - |\n| 1 | 2 |\n```\ntail\n"
+      ]
+    ],
+    "output": "\u001b[2m```\u001b[0m\n\u250c\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mA\u001b[0m \u2502 \u001b[1mB\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2561\n\u2502 1 \u2502 2 \u2502\n\u2514\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2518\n\u001b[2m```\u001b[0m\ntail\n"
+  },
+  {
+    "name": "table_inside_code_fence",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "```\n| A | B |\n| - | - |\n| 1 | 2 |\n```\ntail\n"
+      ]
+    ],
+    "output": "\u001b[2m```\u001b[0m\n\u250c\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mA\u001b[0m \u2502 \u001b[1mB\u001b[0m \u2502\n\u255e\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2561\n\u2502 1 \u2502 2 \u2502\n\u2514\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2518\n\u001b[2m```\u001b[0m\ntail\n"
+  },
+  {
+    "name": "table_wrapping",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| Name | Description |\n| --- | --- |\n| Alice | A very long description that wraps around |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mName\u001b[0m  \u2502 \u001b[1mDescription\u001b[0m                               \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 Alice \u2502 A very long description that wraps around \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_wrapping",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| Name | Description |\n| --- | --- |\n| Alice | A very long description that wraps around |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mName\u001b[0m  \u2502 \u001b[1mDescription\u001b[0m  \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 Alice \u2502 A very long  \u2502\n\u2502       \u2502 description  \u2502\n\u2502       \u2502 that wraps   \u2502\n\u2502       \u2502 around       \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_wrapping_bold",
+    "width": 80,
+    "segments": [
+      [
+        "text",
+        "| H |\n| --- |\n| **bold wraps here** |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mH\u001b[0m               \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 \u001b[1mbold wraps here\u001b[0m \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  },
+  {
+    "name": "table_wrapping_bold",
+    "width": 24,
+    "segments": [
+      [
+        "text",
+        "| H |\n| --- |\n| **bold wraps here** |\n"
+      ]
+    ],
+    "output": "\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502 \u001b[1mH\u001b[0m               \u2502\n\u255e\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2561\n\u2502 \u001b[1mbold wraps here\u001b[0m \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n"
+  }
+]

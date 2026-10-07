@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Write what the Python miniclaude computes for fixed inputs, as JSON test
+data for the Go port's differential tests. Run it with the interpreter that
+imports this checkout's miniclaude package (the uv tool install's python):
+scripts/python-expectations <generator> <output-file>. The generators are
+listed in GENERATORS below."""
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+
+def _without_pytest():
+    """The test modules hold the fixtures; they import pytest, which the tool
+    install lacks, only for decorators, so a stand-in that passes functions
+    through is enough to read their data."""
+    import types
+
+    if "pytest" in sys.modules:
+        return
+
+    class _Mark:
+        def __getattr__(self, name):
+            return lambda *a, **k: (lambda f: f)
+
+    stub = types.ModuleType("pytest")
+    stub.mark = _Mark()
+    stub.fixture = lambda *a, **k: (a[0] if a and callable(a[0]) else (lambda f: f))
+    sys.modules["pytest"] = stub
+
+
+def render_fixtures():
+    """The renderer test battery, rendered whole at two widths."""
+    _without_pytest()
+    from miniclaude._render import StreamRenderer
+    from tests.test_render import FIXTURES
+
+    cases = []
+    for name, segments in FIXTURES.items():
+        for width in (80, 24):
+            r = StreamRenderer(width)
+            out = []
+            for kind, text in segments:
+                out.append(r.feed_text(text) if kind == "text" else r.feed_thinking(text))
+            out.append(r.finish())
+            cases.append({"name": name, "width": width, "segments": segments, "output": "".join(out)})
+    return cases
+
+
+GENERATORS = {
+    "render-fixtures": render_fixtures,
+}
+
+if len(sys.argv) != 3 or sys.argv[1] not in GENERATORS:
+    sys.exit("usage: scripts/python-expectations <%s> <output-file>" % "|".join(GENERATORS))
+out = Path(sys.argv[2])
+out.parent.mkdir(parents=True, exist_ok=True)
+out.write_text(json.dumps(GENERATORS[sys.argv[1]](), indent=2, ensure_ascii=True) + "\n")
+print(out)
