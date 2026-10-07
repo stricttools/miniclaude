@@ -34,11 +34,24 @@ const (
 // New builds the application with every command registered.
 func New(version string) *strictcli.App {
 	app := strictcli.NewApp("miniclaude", version,
-		"Less is more: Claude Code minus the bloatware and the bullshit")
+		"Less is more: Claude Code minus the bloatware and the bullshit",
+		strictcli.WithInfraRoot(stateHomeEnv, history.DefaultStateHome))
 	registerRepl(app)
 	registerMock(app)
 	registerHistory(app)
 	return app
+}
+
+// stateHomeEnv names the location root the history file is kept under.
+const stateHomeEnv = "XDG_STATE_HOME"
+
+// historyPath returns the history file's path under the state directory
+// strictcli resolved for stateHomeEnv.
+func historyPath(ctx *strictcli.Context) (string, error) {
+	// A declared location root always resolves, so the boolean is always
+	// true; an empty value (the variable set but empty) is the default.
+	stateHome, _ := ctx.InfraValue(stateHomeEnv)
+	return history.Path(stateHome)
 }
 
 // refusal ends a command before it did anything: the message on stderr and
@@ -86,7 +99,7 @@ func untilDone(ctx *strictcli.Context) (context.Context, context.CancelFunc) {
 // replConfig is what the repl and mock commands share: the terminal, the
 // history file, and the cancellation.
 func replConfig(ctx *strictcli.Context) (repl.Config, error) {
-	path, err := history.Path()
+	path, err := historyPath(ctx)
 	if err != nil {
 		return repl.Config{}, err
 	}
@@ -303,7 +316,7 @@ func registerHistory(app *strictcli.App) {
 	group := app.Group("history", "Manage the REPL's input history file")
 	handler := func(ctx *strictcli.Context, kwargs map[string]interface{}) strictcli.Outcome {
 		from := strictcli.Get[string](kwargs, "from")
-		dest, err := history.Path()
+		dest, err := historyPath(ctx)
 		if err != nil {
 			return failure(ctx, err)
 		}

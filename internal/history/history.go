@@ -1,7 +1,9 @@
 // Package history reads and writes the REPL's input history: a JSONL file,
 // one {"text": ...} object per line, oldest entry first, at
-// $XDG_STATE_HOME/miniclaude/history.jsonl ($HOME/.local/state when
-// XDG_STATE_HOME is unset). It also parses prompt_toolkit's history file,
+// $XDG_STATE_HOME/miniclaude/history.jsonl (~/.local/state when
+// XDG_STATE_HOME is unset or empty); the caller reads the variable and
+// passes its value to Path, so this package reads no environment variable.
+// It also parses prompt_toolkit's history file,
 // the format the Python REPL kept in ~/.miniclaude/history, for the import
 // command, which writes the result through its effects handle with Marshal.
 package history
@@ -22,20 +24,25 @@ type Entry struct {
 	Text string `json:"text"`
 }
 
-// Path returns the history file's path. XDG_STATE_HOME must be absolute
-// when it is set; a relative value is refused rather than ignored.
-func Path() (string, error) {
-	state := os.Getenv("XDG_STATE_HOME")
-	if state == "" {
+// DefaultStateHome is the state directory when XDG_STATE_HOME is unset or
+// empty, as the XDG base directory specification sets it.
+const DefaultStateHome = "~/.local/state"
+
+// Path returns the history file's path under stateHome, the value of
+// XDG_STATE_HOME. Empty means DefaultStateHome in the home directory; any
+// other value must be absolute, and a relative one is refused rather than
+// ignored.
+func Path(stateHome string) (string, error) {
+	if stateHome == "" {
 		home, err := os.UserHomeDir()
 		if err != nil {
 			return "", fmt.Errorf("history: finding the home directory: %w", err)
 		}
-		state = filepath.Join(home, ".local", "state")
-	} else if !filepath.IsAbs(state) {
-		return "", fmt.Errorf("history: XDG_STATE_HOME is %q, which is not an absolute path", state)
+		stateHome = filepath.Join(home, strings.TrimPrefix(DefaultStateHome, "~/"))
+	} else if !filepath.IsAbs(stateHome) {
+		return "", fmt.Errorf("history: the state directory is %q, which is not an absolute path; set XDG_STATE_HOME to an absolute path, or leave it unset for %s", stateHome, DefaultStateHome)
 	}
-	return filepath.Join(state, "miniclaude", "history.jsonl"), nil
+	return filepath.Join(stateHome, "miniclaude", "history.jsonl"), nil
 }
 
 // Load returns the entries of the history file at path, oldest first. A
