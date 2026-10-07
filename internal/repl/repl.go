@@ -383,6 +383,15 @@ func (c *controller) loop() error {
 			c.signal = s
 			c.exit = true
 		case <-c.cfg.Cancel:
+			// A SIGINT or SIGTERM both cancels the command context and
+			// arrives on signals, and select picks between ready cases at
+			// random; taking the signal here makes the outcome the same
+			// whichever case fired.
+			select {
+			case s := <-c.signals:
+				c.signal = s
+			default:
+			}
 			c.exit = true
 		}
 		if c.fatal != nil {
