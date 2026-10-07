@@ -21,6 +21,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"sync"
 	"syscall"
 	"time"
 
@@ -42,10 +43,6 @@ const tickInterval = 250 * time.Millisecond
 
 // interruptTimeout limits the wait for Claude Code to answer an interrupt.
 const interruptTimeout = 30 * time.Second
-
-// historyBacklog is how many submitted lines may wait for the history
-// writer before a submit waits for it.
-const historyBacklog = 256
 
 // updateBatch is how many posted closures the controller runs before it
 // draws, so a fast stream is drawn in batches rather than once per delta.
@@ -100,7 +97,8 @@ type Outcome struct {
 
 // controller is the REPL's state. Every field is read and written on the
 // controller goroutine only, except the fields set before the loop starts
-// and never changed afterwards (cfg, sess, term, updates, stopped, base).
+// and never changed afterwards (cfg, sess, term, updates, stopped, base,
+// hist, histResult); hist guards its own contents with a mutex.
 type controller struct {
 	cfg  Config
 	sess session.Session
@@ -123,7 +121,9 @@ type controller struct {
 	updates chan func(*controller)
 	stopped chan struct{}
 
-	histLines  chan string
+	// hist hands submitted lines to the history writer without ever
+	// blocking the controller.
+	hist       *historyQueue
 	histResult chan error
 
 	signals   chan os.Signal
@@ -195,7 +195,7 @@ func Run(cfg Config) (outcome Outcome, err error) {
 		cancelBase: cancelBase,
 		updates:    make(chan func(*controller), 64),
 		stopped:    make(chan struct{}),
-		histLines:  make(chan string, historyBacklog),
+		hist:       newHistoryQueue(),
 		histResult: make(chan error, 1),
 		signals:    signals,
 		cols:       size.Cols,
@@ -236,7 +236,7 @@ func (c *controller) shutdown() error {
 	c.dec.Stop()
 	c.status.Stop()
 	c.hintTimerStop()
-	close(c.histLines)
+	c.hist.close()
 	return <-c.histResult
 }
 
@@ -246,21 +246,83 @@ func (c *controller) hintTimerStop() {
 	}
 }
 
+// historyQueue holds the submitted lines the history writer has not taken
+// yet. push never blocks, however slow the file is: it appends under the
+// mutex and leaves a wake-up in a one-slot channel, which a pending wake-up
+// already fills.
+type historyQueue struct {
+	mu      sync.Mutex
+	pending []string
+	closed  bool
+	wake    chan struct{}
+}
+
+func newHistoryQueue() *historyQueue {
+	return &historyQueue{wake: make(chan struct{}, 1)}
+}
+
+// push queues text for the writer.
+func (q *historyQueue) push(text string) {
+	q.mu.Lock()
+	q.pending = append(q.pending, text)
+	q.mu.Unlock()
+	q.signal()
+}
+
+// close tells the writer to stop once it has written every queued line.
+func (q *historyQueue) close() {
+	q.mu.Lock()
+	q.closed = true
+	q.mu.Unlock()
+	q.signal()
+}
+
+func (q *historyQueue) signal() {
+	select {
+	case q.wake <- struct{}{}:
+	default:
+	}
+}
+
+// take waits until lines are queued or the queue is closed, and returns the
+// queued lines in push order; the boolean is true, with no lines, when the
+// queue is closed and nothing is left to write.
+func (q *historyQueue) take() ([]string, bool) {
+	for {
+		q.mu.Lock()
+		lines, closed := q.pending, q.closed
+		q.pending = nil
+		q.mu.Unlock()
+		if len(lines) > 0 {
+			return lines, false
+		}
+		if closed {
+			return nil, true
+		}
+		<-q.wake
+	}
+}
+
 // writeHistory appends the submitted lines to the history file, in order,
-// until histLines closes. A failed append is reported in the output and
-// in the error it delivers on histResult at the end. The report is posted
-// from a goroutine of its own: the controller may be waiting to send on a
-// full histLines, and a writer waiting on the controller would never drain
-// it.
+// until the queue is closed and drained. A failed append is reported in the
+// output and in the error it delivers on histResult at the end. The report
+// is posted from a goroutine of its own, so the writer never waits on the
+// controller.
 func (c *controller) writeHistory() {
 	var errs []error
-	for text := range c.histLines {
-		if err := history.Append(c.cfg.HistoryPath, text); err != nil {
-			errs = append(errs, err)
-			updates, stopped := c.updates, c.stopped
-			c.goGuarded(func() {
-				post(updates, stopped, func(c *controller) { c.out.Print(errorLine(err)) })
-			})
+	for {
+		lines, done := c.hist.take()
+		if done {
+			break
+		}
+		for _, text := range lines {
+			if err := history.Append(c.cfg.HistoryPath, text); err != nil {
+				errs = append(errs, err)
+				updates, stopped := c.updates, c.stopped
+				c.goGuarded(func() {
+					post(updates, stopped, func(c *controller) { c.out.Print(errorLine(err)) })
+				})
+			}
 		}
 	}
 	c.histResult <- errors.Join(errs...)
@@ -412,7 +474,7 @@ func (c *controller) submit() {
 		return
 	}
 	if sub.NewHistoryEntry {
-		c.histLines <- sub.Text
+		c.hist.push(sub.Text)
 	}
 	c.out.ResetScroll()
 	if c.busy {
