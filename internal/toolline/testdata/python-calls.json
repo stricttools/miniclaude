@@ -1,0 +1,422 @@
+[
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Read",
+      {
+        "file_path": "/home/m/foo.py"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mRead\u001b[0m /home/m/foo.py"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Write",
+      {
+        "file_path": "/tmp/out.txt"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mWrite\u001b[0m /tmp/out.txt"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Edit",
+      {
+        "file_path": "/tmp/x.py",
+        "old_string": "a"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mEdit\u001b[0m /tmp/x.py"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Bash",
+      {
+        "command": "git status\ngit log"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mBash\u001b[0m git status"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Glob",
+      {
+        "pattern": "**/*.py"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mGlob\u001b[0m **/*.py"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Grep",
+      {
+        "pattern": "TODO",
+        "path": "src/"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mGrep\u001b[0m TODO in src/"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Grep",
+      {
+        "pattern": "TODO"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mGrep\u001b[0m TODO"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "WebFetch",
+      {
+        "url": "https://example.com"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mWebFetch\u001b[0m https://example.com"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "WebSearch",
+      {
+        "query": "python asyncio"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mWebSearch\u001b[0m python asyncio"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Agent",
+      {
+        "description": "refactor module"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mAgent\u001b[0m refactor module"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Task",
+      {
+        "description": "run the audit"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mTask\u001b[0m run the audit"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "TodoWrite",
+      {
+        "todos": [
+          {
+            "a": 1
+          },
+          {
+            "b": 2
+          },
+          {
+            "c": 3
+          }
+        ]
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mTodoWrite\u001b[0m 3 items"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "TodoWrite",
+      {
+        "todos": [
+          {
+            "a": 1
+          }
+        ]
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mTodoWrite\u001b[0m 1 item"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "TodoWrite",
+      {
+        "todos": []
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mTodoWrite\u001b[0m 0 items"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "mcp__github__create_issue",
+      {
+        "title": "Bug report"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mgithub:create_issue\u001b[0m Bug report"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "mcp__github__list_repos",
+      {},
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mgithub:list_repos\u001b[0m"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "FrobnicateWidget",
+      {
+        "count": 5,
+        "mode": "fast"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mFrobnicateWidget\u001b[0m count=5 mode=fast"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "MysteryTool",
+      {},
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mMysteryTool\u001b[0m"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Bash",
+      {
+        "command": "echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mBash\u001b[0m echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\u2026"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Weird",
+      {
+        "blob": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mWeird\u001b[0m blob=yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\u2026"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "WebSearch",
+      {
+        "query": "line1\nline2"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mWebSearch\u001b[0m line1 line2"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Read",
+      {
+        "file_path": "/x"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mRead\u001b[0m /x"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Read",
+      {
+        "file_path": "/x"
+      },
+      "parent-123"
+    ],
+    "kwargs": {},
+    "result": "  \u001b[36m\u25b8\u001b[0m \u001b[1mRead\u001b[0m /x"
+  },
+  {
+    "fn": "format_tool_use",
+    "args": [
+      "Read",
+      {
+        "file_path": "/x"
+      },
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[36m\u25b8\u001b[0m \u001b[1mRead\u001b[0m /x"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      "file contents",
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 file contents\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      "ok",
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 ok\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Bash",
+      "command failed",
+      true,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[31m\u2717 command failed\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      "line1\nline2\nline3",
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 line1 (+2 lines)\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Bash",
+      "boom\ntrace1\ntrace2",
+      true,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[31m\u2717 boom\u001b[0m\u001b[2m (+2 lines)\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      "only line\n\n",
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 only line\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz\u2026\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      [
+        {
+          "type": "text",
+          "text": "hello"
+        },
+        {
+          "type": "text",
+          "text": "world"
+        }
+      ],
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 hello (+1 lines)\u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      null,
+      false,
+      null
+    ],
+    "kwargs": {},
+    "result": "\u001b[2m\u2713 \u001b[0m"
+  },
+  {
+    "fn": "format_tool_result",
+    "args": [
+      "Read",
+      "done",
+      false,
+      "parent-9"
+    ],
+    "kwargs": {},
+    "result": "  \u001b[2m\u2713 done\u001b[0m"
+  }
+]

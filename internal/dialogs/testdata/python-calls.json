@@ -1,0 +1,1366 @@
+[
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "type": "addRules",
+        "rules": [
+          {
+            "toolName": "Bash",
+            "ruleContent": "git status"
+          }
+        ],
+        "behavior": "allow"
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(git status)"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "toolName": "Read"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Read"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "type": "addRule",
+        "rule": {
+          "toolName": "Bash",
+          "ruleContent": "ls -la"
+        }
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(ls -la)"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "toolName": "Bash",
+            "ruleContent": "a"
+          },
+          {
+            "toolName": "Read"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(a), Read"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "tool_name": "Bash",
+            "rule_content": "pwd"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(pwd)"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "weird": 1
+      }
+    ],
+    "kwargs": {},
+    "result": "{\"weird\":1}"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "toolName": "Bash",
+            "ruleContent": "git status"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(git status)"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": [
+          {
+            "rules": [
+              {
+                "toolName": "Bash",
+                "ruleContent": "git status"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "allow_always",
+        "label": "Allow always: Bash(git status)",
+        "suggestion": {
+          "rules": [
+            {
+              "toolName": "Bash",
+              "ruleContent": "git status"
+            }
+          ]
+        }
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "toolName": "Bash",
+            "ruleContent": "a"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(a)"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "toolName": "Bash",
+            "ruleContent": "b"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(b)"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": [
+          {
+            "rules": [
+              {
+                "toolName": "Bash",
+                "ruleContent": "a"
+              }
+            ]
+          },
+          {
+            "rules": [
+              {
+                "toolName": "Bash",
+                "ruleContent": "b"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "allow_always",
+        "label": "Allow always: Bash(a)",
+        "suggestion": {
+          "rules": [
+            {
+              "toolName": "Bash",
+              "ruleContent": "a"
+            }
+          ]
+        }
+      },
+      {
+        "action": "allow_always",
+        "label": "Allow always: Bash(b)",
+        "suggestion": {
+          "rules": [
+            {
+              "toolName": "Bash",
+              "ruleContent": "b"
+            }
+          ]
+        }
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "git status\ngit log"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\ngit status\ngit log\n"
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "Run a shell command",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mRun a shell command\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Edit",
+        "tool_input": {
+          "file_path": "/x/y.py",
+          "old_string": "old line",
+          "new_string": "new line"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Edit\u001b[0m\n\u001b[2m/x/y.py\u001b[0m\n\u001b[31m- old line\u001b[0m\n\u001b[32m+ new line\u001b[0m\n"
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Edit",
+        "tool_input": {
+          "file_path": "/x",
+          "old_string": "o0\no1\no2\no3\no4\no5\no6\no7\no8\no9\no10\no11\no12\no13\no14\no15\no16\no17\no18\no19\no20\no21\no22\no23\no24\no25\no26\no27\no28\no29\no30\no31\no32\no33\no34\no35\no36\no37\no38\no39\no40\no41\no42\no43\no44\no45\no46\no47\no48\no49\no50\no51\no52\no53\no54\no55\no56\no57\no58\no59\no60\no61\no62\no63\no64\no65\no66\no67\no68\no69\no70\no71\no72\no73\no74\no75\no76\no77\no78\no79\no80\no81\no82\no83\no84\no85\no86\no87\no88\no89\no90\no91\no92\no93\no94\no95\no96\no97\no98\no99",
+          "new_string": "n"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Edit\u001b[0m\n\u001b[2m/x\u001b[0m\n\u001b[31m- o0\u001b[0m\n\u001b[31m- o1\u001b[0m\n\u001b[31m- o2\u001b[0m\n\u001b[31m- o3\u001b[0m\n\u001b[31m- o4\u001b[0m\n\u001b[31m- o5\u001b[0m\n\u001b[31m- o6\u001b[0m\n\u001b[31m- o7\u001b[0m\n\u001b[31m- o8\u001b[0m\n\u001b[31m- o9\u001b[0m\n\u001b[31m- o10\u001b[0m\n\u001b[31m- o11\u001b[0m\n\u001b[31m- o12\u001b[0m\n\u001b[31m- o13\u001b[0m\n\u001b[31m- o14\u001b[0m\n\u001b[31m- o15\u001b[0m\n\u001b[31m- o16\u001b[0m\n\u001b[31m- o17\u001b[0m\n\u001b[31m- o18\u001b[0m\n\u001b[31m- o19\u001b[0m\n\u001b[31m- o20\u001b[0m\n\u001b[31m- o21\u001b[0m\n\u001b[31m- o22\u001b[0m\n\u001b[31m- o23\u001b[0m\n\u001b[31m- o24\u001b[0m\n\u001b[31m- o25\u001b[0m\n\u001b[31m- o26\u001b[0m\n\u001b[31m- o27\u001b[0m\n\u001b[31m- o28\u001b[0m\n\u001b[31m- o29\u001b[0m\n\u001b[31m- o30\u001b[0m\n\u001b[31m- o31\u001b[0m\n\u001b[31m- o32\u001b[0m\n\u001b[31m- o33\u001b[0m\n\u001b[31m- o34\u001b[0m\n\u001b[31m- o35\u001b[0m\n\u001b[31m- o36\u001b[0m\n\u001b[31m- o37\u001b[0m\n\u001b[31m- o38\u001b[0m\n\u001b[31m- o39\u001b[0m\n\u001b[2m  ... (60 more lines)\u001b[0m\n\u001b[32m+ n\u001b[0m\n"
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Write",
+        "tool_input": {
+          "file_path": "/a/b.txt",
+          "content": "line0\nline1\nline2\nline3\nline4\nline5\nline6\nline7\nline8\nline9\nline10\nline11\nline12\nline13\nline14\nline15\nline16\nline17\nline18\nline19\nline20\nline21\nline22\nline23\nline24\nline25\nline26\nline27\nline28\nline29\nline30\nline31\nline32\nline33\nline34\nline35\nline36\nline37\nline38\nline39\nline40\nline41\nline42\nline43\nline44\nline45\nline46\nline47\nline48\nline49"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Write\u001b[0m\n\u001b[2m/a/b.txt\u001b[0m  339 bytes\n  line0\n  line1\n  line2\n  line3\n  line4\n  line5\n  line6\n  line7\n  line8\n  line9\n  line10\n  line11\n  line12\n  line13\n  line14\n  line15\n  line16\n  line17\n  line18\n  line19\n\u001b[2m  ... (30 more lines)\u001b[0m\n"
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "WebFetch",
+        "tool_input": {
+          "url": "http://x",
+          "n": 3
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use WebFetch\u001b[0m\n{\"url\":\"http://x\",\"n\":3}\n"
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Which color do you prefer?",
+            "options": [
+              {
+                "label": "Red"
+              },
+              {
+                "label": "Blue"
+              }
+            ],
+            "multiSelect": false
+          }
+        ]
+      },
+      [
+        "Red"
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Which color do you prefer?",
+          "options": [
+            {
+              "label": "Red"
+            },
+            {
+              "label": "Blue"
+            }
+          ],
+          "multiSelect": false
+        }
+      ],
+      "answers": {
+        "Which color do you prefer?": "Red"
+      }
+    }
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Favorite?",
+            "options": [
+              {
+                "label": "A"
+              }
+            ]
+          }
+        ]
+      },
+      [
+        "my own custom answer"
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Favorite?",
+          "options": [
+            {
+              "label": "A"
+            }
+          ]
+        }
+      ],
+      "answers": {
+        "Favorite?": "my own custom answer"
+      }
+    }
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Pick some",
+            "multiSelect": true,
+            "options": [
+              {
+                "label": "Red"
+              },
+              {
+                "label": "Blue"
+              }
+            ]
+          }
+        ]
+      },
+      [
+        [
+          "Red",
+          "Blue"
+        ]
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Pick some",
+          "multiSelect": true,
+          "options": [
+            {
+              "label": "Red"
+            },
+            {
+              "label": "Blue"
+            }
+          ]
+        }
+      ],
+      "answers": {
+        "Pick some": "Red, Blue"
+      }
+    }
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Q1"
+          },
+          {
+            "question": "Q2"
+          }
+        ]
+      },
+      [
+        "A1",
+        [
+          "x",
+          "y"
+        ]
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Q1"
+        },
+        {
+          "question": "Q2"
+        }
+      ],
+      "answers": {
+        "Q1": "A1",
+        "Q2": "x, y"
+      }
+    }
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "1, 3",
+      3
+    ],
+    "kwargs": {},
+    "result": [
+      0,
+      2
+    ]
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "2,2,1",
+      3
+    ],
+    "kwargs": {},
+    "result": [
+      1,
+      0
+    ]
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "abc",
+      3
+    ],
+    "kwargs": {},
+    "result": null
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "",
+      3
+    ],
+    "kwargs": {},
+    "result": null
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "1,foo",
+      3
+    ],
+    "kwargs": {},
+    "result": null
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "4",
+      3
+    ],
+    "kwargs": {},
+    "result": null
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "0",
+      3
+    ],
+    "kwargs": {},
+    "result": null
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": [
+          {
+            "rules": [
+              {
+                "toolName": "Bash",
+                "ruleContent": "ls"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "suggestion_label",
+    "args": [
+      {
+        "rules": [
+          {
+            "toolName": "Bash",
+            "ruleContent": "ls"
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": "Bash(ls)"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": [
+          {
+            "rules": [
+              {
+                "toolName": "Bash",
+                "ruleContent": "ls"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "allow_always",
+        "label": "Allow always: Bash(ls)",
+        "suggestion": {
+          "rules": [
+            {
+              "toolName": "Bash",
+              "ruleContent": "ls"
+            }
+          ]
+        }
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_decision_surface",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": "\u001b[1mClaude wants to use Bash\u001b[0m\nls\n"
+  },
+  {
+    "fn": "build_permission_choices",
+    "args": [
+      {
+        "request_id": "perm_1",
+        "tool_name": "Bash",
+        "tool_input": {
+          "command": "ls"
+        },
+        "title": "",
+        "permission_suggestions": []
+      }
+    ],
+    "kwargs": {},
+    "result": [
+      {
+        "action": "allow_once",
+        "label": "Allow once",
+        "suggestion": null
+      },
+      {
+        "action": "deny",
+        "label": "Deny",
+        "suggestion": null
+      },
+      {
+        "action": "deny_message",
+        "label": "Deny with a message...",
+        "suggestion": null
+      }
+    ]
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Which color do you prefer?",
+            "options": [
+              {
+                "label": "Red",
+                "description": "Red"
+              },
+              {
+                "label": "Blue",
+                "description": "Blue"
+              }
+            ],
+            "multiSelect": false
+          }
+        ]
+      },
+      [
+        "Red"
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Which color do you prefer?",
+          "options": [
+            {
+              "label": "Red",
+              "description": "Red"
+            },
+            {
+              "label": "Blue",
+              "description": "Blue"
+            }
+          ],
+          "multiSelect": false
+        }
+      ],
+      "answers": {
+        "Which color do you prefer?": "Red"
+      }
+    }
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Favorite?",
+            "options": [
+              {
+                "label": "A"
+              },
+              {
+                "label": "B"
+              }
+            ],
+            "multiSelect": false
+          }
+        ]
+      },
+      [
+        "something else"
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Favorite?",
+          "options": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "B"
+            }
+          ],
+          "multiSelect": false
+        }
+      ],
+      "answers": {
+        "Favorite?": "something else"
+      }
+    }
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "1, 3",
+      3
+    ],
+    "kwargs": {},
+    "result": [
+      0,
+      2
+    ]
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Pick some",
+            "options": [
+              {
+                "label": "Red"
+              },
+              {
+                "label": "Blue"
+              },
+              {
+                "label": "Green"
+              }
+            ],
+            "multiSelect": true
+          }
+        ]
+      },
+      [
+        [
+          "Red",
+          "Green"
+        ]
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Pick some",
+          "options": [
+            {
+              "label": "Red"
+            },
+            {
+              "label": "Blue"
+            },
+            {
+              "label": "Green"
+            }
+          ],
+          "multiSelect": true
+        }
+      ],
+      "answers": {
+        "Pick some": "Red, Green"
+      }
+    }
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "1",
+      3
+    ],
+    "kwargs": {},
+    "result": [
+      0
+    ]
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Pick some",
+            "options": [
+              {
+                "label": "Red"
+              },
+              {
+                "label": "Blue"
+              },
+              {
+                "label": "Green"
+              }
+            ],
+            "multiSelect": true
+          }
+        ]
+      },
+      [
+        [
+          "Red",
+          "Purple too"
+        ]
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Pick some",
+          "options": [
+            {
+              "label": "Red"
+            },
+            {
+              "label": "Blue"
+            },
+            {
+              "label": "Green"
+            }
+          ],
+          "multiSelect": true
+        }
+      ],
+      "answers": {
+        "Pick some": "Red, Purple too"
+      }
+    }
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "nonsense",
+      2
+    ],
+    "kwargs": {},
+    "result": null
+  },
+  {
+    "fn": "parse_multiselect",
+    "args": [
+      "2",
+      2
+    ],
+    "kwargs": {},
+    "result": [
+      1
+    ]
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Pick",
+            "options": [
+              {
+                "label": "A"
+              },
+              {
+                "label": "B"
+              }
+            ],
+            "multiSelect": true
+          }
+        ]
+      },
+      [
+        [
+          "B"
+        ]
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Pick",
+          "options": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "B"
+            }
+          ],
+          "multiSelect": true
+        }
+      ],
+      "answers": {
+        "Pick": "B"
+      }
+    }
+  },
+  {
+    "fn": "build_question_answers",
+    "args": [
+      {
+        "questions": [
+          {
+            "question": "Q1",
+            "options": [
+              {
+                "label": "A"
+              },
+              {
+                "label": "B"
+              }
+            ],
+            "multiSelect": false
+          },
+          {
+            "question": "Q2",
+            "options": [
+              {
+                "label": "X"
+              },
+              {
+                "label": "Y"
+              }
+            ],
+            "multiSelect": false
+          }
+        ]
+      },
+      [
+        "A",
+        "Y"
+      ]
+    ],
+    "kwargs": {},
+    "result": {
+      "questions": [
+        {
+          "question": "Q1",
+          "options": [
+            {
+              "label": "A"
+            },
+            {
+              "label": "B"
+            }
+          ],
+          "multiSelect": false
+        },
+        {
+          "question": "Q2",
+          "options": [
+            {
+              "label": "X"
+            },
+            {
+              "label": "Y"
+            }
+          ],
+          "multiSelect": false
+        }
+      ],
+      "answers": {
+        "Q1": "A",
+        "Q2": "Y"
+      }
+    }
+  }
+]
