@@ -16,7 +16,6 @@ require (
 	github.com/clipperhouse/uax29/v2 v2.2.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.4.3 // indirect
 	github.com/smm-h/go-toml-edit v0.4.0 // indirect
-	github.com/stricttools/go-toml-edit v0.5.0 // indirect
 )
 
 replace github.com/stricttools/claudestream => ../claudestream

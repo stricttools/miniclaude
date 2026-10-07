@@ -6,8 +6,6 @@ github.com/pelletier/go-toml/v2 v2.4.3 h1:GTRvJQutkOSftxIFD5xw9aepkYNuPWmVJpffdD
 github.com/pelletier/go-toml/v2 v2.4.3/go.mod h1:2gIqNv+qfxSVS7cM2xJQKtLSTLUE9V8t9Stt+h56mCY=
 github.com/smm-h/go-toml-edit v0.4.0 h1:SewwlafoSSxp2O52Ro5S/xC74vutGoUo84Sa7GcbMJQ=
 github.com/smm-h/go-toml-edit v0.4.0/go.mod h1:S54Qz/7GFldPeR7Zdv16YtBgQjNwD2xai0i/KFMOQ0Q=
-github.com/stricttools/go-toml-edit v0.5.0 h1:21IkWoTA1efKhGnPxOaY3VS2VLevaHRNHgcRkh0oZiA=
-github.com/stricttools/go-toml-edit v0.5.0/go.mod h1:7eeWlpfpfjScMk3JTUttd+JOusRnNSAYUSXIJCJzbB8=
 github.com/stricttools/strictcli/go v0.38.0 h1:ehbZjD704EGmw5gebpnAV5VTktNQ5kHV/QbbAwd/Vek=
 github.com/stricttools/strictcli/go v0.38.0/go.mod h1:HkNzHaH9J5uWOVcklbDmifc5MqwiFOOs9T8bP2504iw=
 golang.org/x/sys v0.47.0 h1:o7XGOvZQCADBQQ4Y7VNq2dRWQR7JmOUW8Kxx4ZsNgWs=
