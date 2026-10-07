@@ -248,13 +248,19 @@ func (c *controller) hintTimerStop() {
 
 // writeHistory appends the submitted lines to the history file, in order,
 // until histLines closes. A failed append is reported in the output and
-// in the error it delivers on histResult at the end.
+// in the error it delivers on histResult at the end. The report is posted
+// from a goroutine of its own: the controller may be waiting to send on a
+// full histLines, and a writer waiting on the controller would never drain
+// it.
 func (c *controller) writeHistory() {
 	var errs []error
 	for text := range c.histLines {
 		if err := history.Append(c.cfg.HistoryPath, text); err != nil {
 			errs = append(errs, err)
-			post(c.updates, c.stopped, func(c *controller) { c.out.Print(errorLine(err)) })
+			updates, stopped := c.updates, c.stopped
+			c.goGuarded(func() {
+				post(updates, stopped, func(c *controller) { c.out.Print(errorLine(err)) })
+			})
 		}
 	}
 	c.histResult <- errors.Join(errs...)
