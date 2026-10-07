@@ -10,10 +10,15 @@ import (
 // reset is the SGR sequence that clears every character attribute.
 const reset = "\x1b[0m"
 
+// widths measures cells with a fixed condition rather than one taken from
+// the locale, the condition the renderer measures with: East Asian
+// ambiguous characters take one cell, wide and fullwidth characters two.
+var widths = &runewidth.Condition{EastAsianWidth: false, StrictEmojiNeutral: true}
+
 // displayRune returns how r is drawn and its width in cells. Control
 // characters are drawn in caret notation (a tab is "^I"), as prompt_toolkit
 // draws them; C1 controls are drawn as "?". Every other rune is drawn as
-// itself, its width from runewidth.
+// itself, its width from widths.
 func displayRune(r rune) (string, int) {
 	switch {
 	case r < 0x20:
@@ -23,7 +28,7 @@ func displayRune(r rune) (string, int) {
 	case r >= 0x80 && r < 0xa0:
 		return "?", 1
 	}
-	return string(r), runewidth.RuneWidth(r)
+	return string(r), widths.RuneWidth(r)
 }
 
 // DisplayRune returns how r is drawn in a terminal cell run and its width
