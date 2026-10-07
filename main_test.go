@@ -184,3 +184,137 @@ func TestRefusesWithoutATerminal(t *testing.T) {
 		t.Fatalf("%v\n%s", err, out)
 	}
 }
+
+// fakeClaude is a stand-in for Claude Code speaking just enough of the
+// stream-json protocol for one REPL turn: it answers the initialize
+// handshake and, for each user message, streams one reply and a result.
+const fakeClaude = `#!/bin/bash
+if [ "$1" = "-v" ]; then echo "2.1.281 (Claude Code)"; exit 0; fi
+printf '%s\n' "$*" > "$HOME/claude-args"
+while IFS= read -r line; do
+  case "$line" in
+    *'"subtype":"initialize"'*)
+      printf '%s\n' '{"type":"control_response","response":{"subtype":"success","response":{}}}' ;;
+    *'"type":"user"'*)
+      printf '%s\n' '{"type":"system","subtype":"init","cwd":"/w","session_id":"s1","model":"claude-fake","permissionMode":"default","uuid":"u"}'
+      printf '%s\n' '{"type":"stream_event","session_id":"s1","event":{"type":"content_block_delta","delta":{"type":"text_delta","text":"fake-REPLY "}}}'
+      printf '%s\n' '{"type":"stream_event","session_id":"s1","event":{"type":"content_block_delta","delta":{"type":"text_delta","text":"done\n"}}}'
+      printf '%s\n' '{"type":"assistant","session_id":"s1","message":{"content":[{"type":"text","text":"fake-REPLY done\n"}]}}'
+      printf '%s\n' '{"type":"result","subtype":"success","is_error":false,"num_turns":1,"result":"x","session_id":"s1","total_cost_usd":0.5,"duration_ms":1200,"usage":{"input_tokens":3,"output_tokens":4},"modelUsage":{"claude-fake":{"inputTokens":3,"contextWindow":100}}}' ;;
+  esac
+done
+`
+
+// fakeClaudewheel runs what follows "--" in "profile exec --name P -- ...".
+const fakeClaudewheel = `#!/bin/sh
+[ "$1 $2 $3" = "profile exec --name" ] || exit 2
+shift 4
+[ "$1" = "--" ] || exit 2
+shift
+exec "$@"
+`
+
+func TestReplRunsATurnOnAClaudeCodeSession(t *testing.T) {
+	home := t.TempDir()
+	claude, wheel := filepath.Join(home, "claude"), filepath.Join(home, "claudewheel")
+	for path, body := range map[string]string{claude: fakeClaude, wheel: fakeClaudewheel} {
+		if err := os.WriteFile(path, []byte(body), 0o755); err != nil {
+			t.Fatal(err)
+		}
+	}
+	cmd := exec.Command(os.Args[0], "repl", "--profile", "work", "--model", "opus", "--permission-mode", "bypassPermissions",
+		"--claude-binary", claude, "--claudewheel-binary", wheel)
+	cmd.Dir = home
+	cmd.Env = []string{childEnv + "=1", "HOME=" + home, "XDG_STATE_HOME=" + filepath.Join(home, "state"),
+		"PATH=/usr/bin:/bin", "TERM=xterm-256color"}
+	p := ptytest.StartPTY(t, cmd, 24, 80)
+	p.Expect("┌", waitFor)
+	p.Send("hello there\r")
+	p.Expect("fake-REPLY done", waitFor)
+	p.Expect("$0.5000 · 1.2s · 1 turn(s) · ctx 3%", waitFor)
+	p.Send("/cost\r")
+	p.Expect("7 tokens", waitFor)
+	p.Send("/quit\r")
+	if code := p.Wait(waitFor); code != 0 {
+		t.Fatalf("exit %d; output:\n%q", code, p.Output())
+	}
+	args, err := os.ReadFile(filepath.Join(home, "claude-args"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, want := range []string{"--model opus", "--permission-mode bypassPermissions", "--permission-prompt-tool stdio"} {
+		if !strings.Contains(string(args), want) {
+			t.Errorf("claude was started without %s: %s", want, args)
+		}
+	}
+}
+
+func runCLI(t *testing.T, home string, args ...string) (string, int) {
+	t.Helper()
+	cmd := exec.Command(os.Args[0], args...)
+	cmd.Dir = home
+	cmd.Env = []string{childEnv + "=1", "HOME=" + home, "XDG_STATE_HOME=" + filepath.Join(home, "state"), "PATH=/usr/bin:/bin"}
+	out, err := cmd.CombinedOutput()
+	code := 0
+	if exitErr, ok := err.(*exec.ExitError); ok {
+		code = exitErr.ExitCode()
+	} else if err != nil {
+		t.Fatal(err)
+	}
+	return string(out), code
+}
+
+func TestHistoryImport(t *testing.T) {
+	home := t.TempDir()
+	src := filepath.Join(home, "pt_history")
+	data, err := os.ReadFile("internal/history/testdata/prompt_toolkit_history")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(src, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	dest := filepath.Join(home, "state", "miniclaude", "history.jsonl")
+	out, code := runCLI(t, home, "history", "import", "--from", src, "--dry-run")
+	if code != 0 || !strings.Contains(out, "would import 4 entries") {
+		t.Fatalf("dry run: exit %d\n%s", code, out)
+	}
+	if _, err := os.Stat(dest); !os.IsNotExist(err) {
+		t.Fatal("the dry run wrote the history")
+	}
+	out, code = runCLI(t, home, "history", "import", "--from", src)
+	if code != 0 || !strings.Contains(out, "imported 4 entries") {
+		t.Fatalf("import: exit %d\n%s", code, out)
+	}
+	info, err := os.Stat(dest)
+	if err != nil || info.Mode().Perm() != 0o600 {
+		t.Fatalf("destination %v %v", info, err)
+	}
+	if _, code := runCLI(t, home, "history", "import", "--from", src); code != 2 {
+		t.Fatalf("an existing destination: exit %d", code)
+	}
+	if _, code := runCLI(t, home, "history", "import", "--from", filepath.Join(home, "missing")); code == 0 {
+		t.Fatal("a missing source was imported")
+	}
+}
+
+func TestCommandLineRefusals(t *testing.T) {
+	home := t.TempDir()
+	cases := [][]string{
+		{"repl", "--profile", "p", "--model", "m", "--permission-mode", "bypassPermissions"},
+		{"repl", "--profile", "p", "--model", "m", "--permission-mode", "yolo"},
+		{"repl", "--profile", "p", "--permission-mode", "default"},
+		{"repl", "--profile", "p", "--model", "m", "--permission-mode", "default", "--json"},
+		{"repl", "--profile", "p", "--model", "m", "--permission-mode", "default", "--dry-run"},
+		{"mock", "--seed", "-1"},
+		{"mock", "--json"},
+	}
+	for _, args := range cases {
+		if out, code := runCLI(t, home, args...); code == 0 {
+			t.Errorf("%v accepted:\n%s", args, out)
+		}
+	}
+	if out, code := runCLI(t, home, "--version"); code != 0 || !strings.Contains(out, "miniclaude") {
+		t.Errorf("--version: exit %d %s", code, out)
+	}
+}
