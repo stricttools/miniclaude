@@ -7,7 +7,7 @@ toolchain go1.26.8
 require (
 	github.com/mattn/go-runewidth v0.0.24
 	github.com/stricttools/claudestream v0.16.0
-	github.com/stricttools/strictcli/go v0.39.0
+	github.com/stricttools/strictcli/go v0.39.1
 	golang.org/x/sys v0.47.0
 	golang.org/x/term v0.44.0
 )
