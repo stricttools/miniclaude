@@ -1,5 +1,5 @@
 # strictspec document version gate (do not remove)
-format_version = 1
+format_version = 2
 # Version bump type: patch, minor, major, infra, or prerelease
 #   prerelease: advance an existing pre-release (0.6.0-beta.0 -> -beta.1)
 bump = "patch"
@@ -24,7 +24,7 @@ so the dependency can never resolve below the version the fix needs.
 # blog = false
 include = ["pypi", "npm"]
 exclude = []
-candidate_sha = "8ee867e2be856794d47da1206b74620f7e4d992b"
+release_commit = "8ee867e2be856794d47da1206b74620f7e4d992b"
 
-[tree_hashes]
+[released_trees]
 "." = "98f7323f3d8f2839e6439f995c760ef3f07cc510"

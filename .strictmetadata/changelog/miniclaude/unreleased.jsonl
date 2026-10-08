@@ -1,0 +1,40 @@
+{"format_version":2,"id":"18d53aba5f0959573f20af9ffc3b42768bfdc2296931de43","commits":["3f0b1ebc09c43da24579738ba948a3063827cc9d"],"user_facing":true,"description":"**The project describes itself consistently on PyPI, npm and in its README.** The repository description advertised an \"inline\" terminal client while the package metadata said \"fullscreen\"; fullscreen is the true one, since the REPL runs on the alternate screen.","type":"fix"}
+{"format_version":2,"id":"18d59921647e45b90a2a4e3c2ba74befb88462927283b583","commits":["debc5ccac2076dda437d1ebd64d180a0409b1aba"],"user_facing":true,"description":"**The tool describes itself with one sentence everywhere, including `--help`.** The `--help` header, README and the Python and npm package metadata now carry the same description.","type":"fix"}
+{"format_version":2,"id":"18d62a0ce52a841a0419d9799d6b42fcacd69428fb33107a","commits":["5755cb27221cecda573f155981d452ac41ee7029"],"user_facing":true,"description":"**The package metadata names the repository where it actually lives.** The repository moved to the stricttools organisation, so the npm page's repository and issue links pointed at the old owner, and a publish whose build attestation named the new one was rejected.","type":"fix"}
+{"format_version":2,"id":"18d62a15b0a0fa4a57c24598ac914efd98afc9faf23b615e","commits":["5129796bfc5e230633baf9d2bcd3ff43e246fa8d"],"user_facing":false}
+{"format_version":2,"id":"18d8fbabffc507a0642df35a89fe4544ac528aec49e47282","commits":["90d67151e6082b405468d72e86319e9f47697aba"],"user_facing":false}
+{"format_version":2,"id":"18dc423dcf1c14c9d3c6cf44a5514b97a0ac2544e19f1b9c","commits":["a7c57d1a229480856bb73ba018347ab1c7171f8a"],"user_facing":false}
+{"format_version":2,"id":"18dc426b6335e3307de57c77b21341528ec53fca0cd99dc9","commits":["cf2b94dbe68f6a93e24e2dec11fb4c7f8df324ac"],"user_facing":false}
+{"format_version":2,"id":"18dc4279f07e7acec2b5fcbe2fa2435cac6d0bc0f441c14d","commits":["67db67f974b85749b620055c66f7da0c5cd79c0f"],"user_facing":false}
+{"format_version":2,"id":"18dc4299cbed1a6c7ba6f72ce0ba46b683591cbcf28676d3","commits":["a256bcf19bdd4f46cbb0a11cc7dc3eb608e171dd"],"user_facing":false}
+{"format_version":2,"id":"18dc42a5ea66a84860afa2a870a54141b71d502eda4007ae","commits":["952c757c313ebecaac24e4dde710138fdc3b2633"],"user_facing":false}
+{"format_version":2,"id":"18dc42a6fb8c9b1e8534b8a6b7df4f4e8319d8f19652e26a","commits":["d086d39f232221aeea00b422c572fd16c75a33be"],"user_facing":false}
+{"format_version":2,"id":"18dc42a725e30daa988ff4f4873a4fd38338a0aa325c257b","commits":["1d7d2a97652c4c8c36350b26ea5c3b48ed8fd43e"],"user_facing":false}
+{"format_version":2,"id":"18dc42b0c3b07c9ae69f3b1eccfa41af86fea41fa8c107d2","commits":["24ccab0414922ae19c3e40f63ded1467b0d0b9b0"],"user_facing":false}
+{"format_version":2,"id":"18dc42b89843ae2080db00d1482a4b258a9c3f3fd1734ad4","commits":["5c7308931800b70ea07714061714e76894d53c23"],"user_facing":false}
+{"format_version":2,"id":"18dc42c1f80bc81cd176928563ea4e55a991493b7b6743de","commits":["57296fd7de87904cf17f2aa9263f966a6ddf2942"],"user_facing":false}
+{"format_version":2,"id":"18dc42ce889186cff948ee6b1b0141c79a5413f4b24cd90a","commits":["6cd34afb85e63544b74ac6116521ef6361de0d68"],"user_facing":false}
+{"format_version":2,"id":"18dc42cf6768ac1f200ef7e798934add9ccf470c8f523a33","commits":["908b36a8492dedc8958666590b71932928af0adc"],"user_facing":false}
+{"format_version":2,"id":"18dc43814984f1b673a0b8e8f3654dab9aecdeba3598b65e","commits":["7197324fc534873d1a0d88335bb0fd4bf3ef45a9"],"user_facing":false}
+{"format_version":2,"id":"18dc43b151116a08bfbd84a1af5344eb83b9fd8d1d221fd4","commits":["b5ae7996be4282244c45e6425615ae3fe6c00d0a"],"user_facing":false}
+{"format_version":2,"id":"18dc43b1cff9048fef997d8150d64011a3564ea1353c923f","commits":["c488872c0246d3d037509704106fbda7c126c7f3"],"user_facing":false}
+{"format_version":2,"id":"18dc442367be03b20603c166193940faa6978aa81e27d2a1","commits":["d1b8112cd0431a98f599cf7a60ae785d1b43c1f1"],"user_facing":false}
+{"format_version":2,"id":"18dc4466da715cbc12f5a60ed7324dd08fbec52e762ff9a9","commits":["ea3d9772f974925fbfcd2fdef1beda6de936f66b"],"user_facing":false}
+{"format_version":2,"id":"18dc446e322b7b5d63842eae3fb34dfa98b301bda0d7bfff","commits":["28ac1c743c0cebc5f7b4ec5abd6494cec9056e20"],"user_facing":false}
+{"format_version":2,"id":"18dc44e7a0c357ecc24a8e41534141469c921787f72caa28","commits":["96d62da4095d87c31a2c42fdc69dc03e7d25aafd"],"user_facing":false}
+{"format_version":2,"id":"18dc44e7b1c7e5627a0d1011b5874cf9b6280244fe600c92","commits":["4c82ef3350dca1b8f1d091b52e7f12b0cb44725e"],"user_facing":false}
+{"format_version":2,"id":"18dc450643b3cadd6ca0d6d7f3d14115b2af408d64947a7c","commits":["e02642de9f54719f42ad3985b97b288cbf4e357c"],"user_facing":false}
+{"format_version":2,"id":"18dc45096ea320aa048d58ead0be436997f9a455d8b338e2","commits":["5f1cd24c1fea9c88e685ea5bfaec3341bddfe833"],"user_facing":false}
+{"format_version":2,"id":"18dc450fd27268c15ab28b3373b64ae9b62e93277a55c5d3","commits":["8b4cf98975a9bb784acd046c7a527f807895143d"],"user_facing":false}
+{"format_version":2,"id":"18dc451761ce46ff2a74fed93b79473fa1cd8f2ab46b67f3","commits":["16346d53301ab1ce4ba7512a573aa917093510be"],"user_facing":false}
+{"format_version":2,"id":"18dc4523ed4a4f6e75d61b94f786423db2a1dd6e54732374","commits":["bcb79ef8083c829abbfb11d8145cd6c1a495ecd2"],"user_facing":false}
+{"format_version":2,"id":"18dc53d39b17a225a38dc3a271f3480aa0806f8292cf64af","commits":["cc6bbf60b9f39a5a71d7d80849dae36041d310f4"],"user_facing":false}
+{"format_version":2,"id":"18dc53df741e85c2eb3e920b95374370867a049a01a60ed5","commits":["c6aa008fb7244adc8d4f75e5e5de360025d1394f"],"user_facing":false}
+{"format_version":2,"id":"18dc53ef4e21ac14c07a4ea697ac40baa078f3b1897a9086","commits":["aff1b7f6dddc61b6a43448ade394dd311c6a5899"],"user_facing":false}
+{"format_version":2,"id":"18dc54157fd032b9fe50e20e45264dd2a4066d7fae81c61d","commits":["06b82c2f3b145374d5c9d920211360e5db3d1e6a"],"user_facing":false}
+{"format_version":2,"id":"18dc541feba79f09787d549427164857b37290a4e9d793ad","commits":["f898f0a3c3977094d1fd0c7a822e96511a8b1012"],"user_facing":false}
+{"format_version":2,"id":"18dc54270ac3540b6246431098764ae887e7f682d2a1b86a","commits":["5067226ad0cf4c47bed930df25da4cc438d15aa7"],"user_facing":false}
+{"format_version":2,"id":"18dc54304294542bcfa0704114284132a6f59cd0f8ab3c18","commits":["33fa71fcb62c5c4abb8fbf6048ce9472f6d6875a"],"user_facing":false}
+{"format_version":2,"id":"18dc5435b5d4473bdafe3669a3bd44cdbb025c32740b7281","commits":["45c8f9775afc183b48a865c3ad2abb610dc580a5"],"user_facing":false}
+{"format_version":2,"id":"18dc5444188a1ae9482b073f675d4888b9136b433f4e0bdc","commits":["b0acd8c65883a00fd92e429270c8cec9a785f805"],"user_facing":false}
+{"format_version":2,"id":"18dc54c1cbb2cdbd9f7afaab27354837832d594371d3d565","commits":["a76dc02c0627c611194ff019cb804b1198a4d0d2"],"user_facing":false}
