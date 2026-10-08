@@ -9,7 +9,7 @@ import (
 )
 
 // call is one call of a dialog builder the Python's dialog tests made, with
-// its result (scripts/python-expectations dialog-calls).
+// its result, recorded by a generator deleted with the Python.
 type call struct {
 	Fn     string            `json:"fn"`
 	Args   []json.RawMessage `json:"args"`

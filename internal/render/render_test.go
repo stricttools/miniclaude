@@ -8,7 +8,7 @@ import (
 )
 
 // fixture is one case of the Python's renderer battery and what the Python
-// rendered for it (scripts/python-expectations render-fixtures).
+// rendered for it, recorded by a generator deleted with the Python.
 type fixture struct {
 	Name     string      `json:"name"`
 	Width    int         `json:"width"`

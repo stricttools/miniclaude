@@ -7,7 +7,7 @@ import (
 )
 
 // call is one formatter call the Python's tool line tests made, with its
-// result (scripts/python-expectations toolline-calls).
+// result, recorded by a generator deleted with the Python.
 type call struct {
 	Fn     string            `json:"fn"`
 	Args   []json.RawMessage `json:"args"`
