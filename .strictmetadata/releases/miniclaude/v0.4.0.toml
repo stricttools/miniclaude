@@ -9,3 +9,6 @@ context = "The stricttools projects are moving to Go; the Python and npm release
 # The targets released, and the ones left out; between them they name every target of the releasable's members.
 include = ["go"]
 exclude = []
+release_commit = "2bc6a48b78ee9b114d0d0156960cc1603467d30e"
+[released_trees]
+"." = "4692244a5fff6fbe4fdd50169c818bb58131d0f8"
