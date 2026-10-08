@@ -2,13 +2,31 @@
 
 # Changelog
 
-## Unreleased
+## 0.4.0
+
+miniclaude rewritten in Go: the same fullscreen REPL on its own terminal layer, sessions started through claudewheel profile exec with claudestream 0.16.0, the prompt history moved to the XDG state directory with an import command, and a command installed with go install or from the release archives. The Python and npm packages are no longer published; PyPI and npm keep 0.3.0.
+
+<details>
+<summary>Context</summary>
+
+The stricttools projects are moving to Go; the Python and npm releases stop at 0.3.0.
+
+</details>
+
+### Breaking
+
+- **miniclaude is now a Go program.** The Python package and the npm shim are gone: install it with `go install github.com/stricttools/miniclaude@v0`, or from the Linux and macOS archives on each GitHub Release. Nothing newer than 0.3.0 is published to PyPI or npm, and 0.3.0 stays there. Python and prompt_toolkit are no longer needed; the fullscreen terminal layer is miniclaude's own.
+- **Sessions start Claude Code through claudewheel.** The REPL runs Claude Code as `claudewheel profile exec`, through claudestream 0.16.0, so it needs a claudewheel that has the `profile exec` command.
+- **The prompt history moves.** Submitted prompts are kept as JSON lines in `$XDG_STATE_HOME/miniclaude/history.jsonl` (`~/.local/state/miniclaude/history.jsonl` when it is unset), not in `~/.miniclaude/history`. Carry the old history over once with `miniclaude history import --from ~/.miniclaude/history`, which refuses when the new file exists.
+
+### Features
+
+- **Command line additions.** `repl` takes `--claude-binary` and `--claudewheel-binary`, absolute paths of the programs (looked up on PATH when omitted); `history import` converts the old history file; `mock` shows its seed as the first output line, and its `dialogs` command also opens a dialog the REPL does not support. `repl` and `mock` refuse `--json` and refuse to run without a terminal on standard input and output.
 
 ### Fixes
 
-- **The project describes itself consistently on PyPI, npm and in its README.** The repository description advertised an "inline" terminal client while the package metadata said "fullscreen"; fullscreen is the true one, since the REPL runs on the alternate screen.
-- **The tool describes itself with one sentence everywhere, including `--help`.** The `--help` header, README and the Python and npm package metadata now carry the same description.
-- **The package metadata names the repository where it actually lives.** The repository moved to the stricttools organisation, so the npm page's repository and issue links pointed at the old owner, and a publish whose build attestation named the new one was rejected.
+- **The REPL keeps going when one thing fails.** A failing `/model`, `/mode`, or `/context` is a red error line instead of ending the REPL; an event that cannot be shown is reported as a red line, and a request that cannot be shown is denied with the reason, instead of ending the turn and leaving Claude Code waiting; a failed interrupt is shown instead of swallowed; a failing howmuchleft is a red line naming the reason instead of stale status rows; and a hung-up terminal (SIGHUP) is restored before miniclaude exits.
+- **Tables stay below the text before them.** A table no longer appears above the paragraph that preceded it when both arrived in the same chunk of the stream; output is the same however the stream is split.
 
 ## 0.3.0
 

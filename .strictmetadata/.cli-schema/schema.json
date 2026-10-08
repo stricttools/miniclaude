@@ -1,0 +1,285 @@
+{
+  "schema_version": 2,
+  "defaults": {
+    "schema_version": 2,
+    "app": {
+      "env_prefix": null,
+      "config": false,
+      "config_format": "json",
+      "config_path": null,
+      "config_conflict_mode": "cli-wins",
+      "proc_observe_allowlist": [],
+      "global_flags": [],
+      "commands": {},
+      "groups": {},
+      "deprecated": {},
+      "tag_contracts": {},
+      "checks": {},
+      "config_fields": {},
+      "infra": {}
+    },
+    "flag": {
+      "short": null,
+      "env": null,
+      "env_separator": null,
+      "prefixed": true,
+      "choices": null,
+      "elect_by": null,
+      "unique": false,
+      "conflict_mode": null,
+      "negatable": null,
+      "nullable": false
+    },
+    "arg": {
+      "variadic": false,
+      "choices": null
+    },
+    "choice": {
+      "flags": []
+    },
+    "choice_record": {
+      "help": null
+    },
+    "command": {
+      "consequential": false,
+      "dry_run_supported": true,
+      "dry_run_unsupported_reason": null,
+      "update_of": null,
+      "write_mode": null,
+      "payload_schema": null,
+      "owns_stdout": false,
+      "passthrough": false,
+      "flags": [],
+      "flag_sets": [],
+      "args": [],
+      "args_after_separator": null,
+      "tags": [],
+      "constraints": [],
+      "hidden": false,
+      "interactive": false,
+      "config_fields": [],
+      "grants": [],
+      "forwarding": null,
+      "requires": []
+    },
+    "group": {
+      "commands": {},
+      "groups": {},
+      "deprecated": {},
+      "tags": [],
+      "hidden": false
+    },
+    "config_field": {
+      "default": null,
+      "bound_commands": []
+    },
+    "check": {
+      "scope": null
+    },
+    "infra": {
+      "roots": [],
+      "handshakes": [],
+      "connections": []
+    }
+  },
+  "project_id": "github.com/stricttools/miniclaude",
+  "name": "miniclaude",
+  "version": "0.4.0",
+  "help": "Less is more: Claude Code minus the bloatware and the bullshit",
+  "commands": {
+    "repl": {
+      "name": "repl",
+      "help": "Start the interactive fullscreen REPL on a Claude Code session",
+      "effect": "mutating",
+      "dry_run_supported": false,
+      "dry_run_unsupported_reason": "the REPL runs Claude Code as a subprocess and appends to the history file outside the effects handle, so a dry run could not preview it",
+      "flags": [
+        {
+          "name": "profile",
+          "help": "claudewheel profile to use",
+          "value_schema": {
+            "type": "string"
+          },
+          "presence": "required"
+        },
+        {
+          "name": "model",
+          "help": "Model to use, e.g. sonnet, haiku",
+          "value_schema": {
+            "type": "string"
+          },
+          "presence": "required"
+        },
+        {
+          "name": "permission-mode",
+          "help": "Permission mode",
+          "value_schema": {
+            "type": "string",
+            "enum": [
+              "default",
+              "acceptEdits",
+              "plan",
+              "bypassPermissions",
+              "dontAsk",
+              "auto"
+            ]
+          },
+          "presence": "required",
+          "choices": [
+            {
+              "value": "default",
+              "help": "ask before every edit and command"
+            },
+            {
+              "value": "acceptEdits",
+              "help": "accept file edits without asking"
+            },
+            {
+              "value": "plan",
+              "help": "plan only -- propose, never act"
+            },
+            {
+              "value": "bypassPermissions",
+              "help": "ask for nothing at all"
+            },
+            {
+              "value": "dontAsk",
+              "help": "act without asking, refusing what needs consent"
+            },
+            {
+              "value": "auto",
+              "help": "let Claude Code pick the mode"
+            }
+          ]
+        },
+        {
+          "name": "cwd",
+          "help": "Working directory. Omitted, the REPL runs in the current directory.",
+          "value_schema": {
+            "type": "string"
+          },
+          "presence": "optional"
+        },
+        {
+          "name": "claude-binary",
+          "help": "Absolute path of the claude program. Omitted, claude is looked up on PATH.",
+          "value_schema": {
+            "type": "string"
+          },
+          "presence": "optional"
+        },
+        {
+          "name": "claudewheel-binary",
+          "help": "Absolute path of the claudewheel program. Omitted, claudewheel is looked up on PATH.",
+          "value_schema": {
+            "type": "string"
+          },
+          "presence": "optional"
+        },
+        {
+          "name": "session",
+          "help": "Which session the REPL runs. Omitted, a new session starts, as with --new-session.",
+          "presence": "default",
+          "default": {
+            "choice": "new-session"
+          },
+          "choices": [
+            {
+              "name": "resume",
+              "help": "Resume a previous session by ID",
+              "flags": [
+                {
+                  "name": "value",
+                  "help": "ID of the session to resume",
+                  "value_schema": {
+                    "type": "string"
+                  },
+                  "presence": "required"
+                }
+              ]
+            },
+            {
+              "name": "continue-session",
+              "help": "Continue the most recent session in the working directory"
+            },
+            {
+              "name": "new-session",
+              "help": "Start a fresh session"
+            }
+          ],
+          "elect_by": "member-flags"
+        }
+      ],
+      "interactive": true
+    },
+    "mock": {
+      "name": "mock",
+      "help": "Run the interactive REPL against a mock session for TUI testing; no Claude Code needed",
+      "effect": "mutating",
+      "dry_run_supported": false,
+      "dry_run_unsupported_reason": "the REPL appends to the history file outside the effects handle, so a dry run could not preview it",
+      "flags": [
+        {
+          "name": "seed",
+          "help": "Random seed (a non-negative integer) for reproducible content. Omitted, one is picked at random; the seed is the first output line either way.",
+          "value_schema": {
+            "type": "string"
+          },
+          "presence": "optional"
+        }
+      ],
+      "interactive": true
+    }
+  },
+  "groups": {
+    "history": {
+      "name": "history",
+      "help": "Manage the REPL's input history file",
+      "commands": {
+        "import": {
+          "name": "import",
+          "help": "Create the history file from the Python REPL's prompt_toolkit history file",
+          "effect": "mutating",
+          "payload_schema": {
+            "additionalProperties": false,
+            "properties": {
+              "destination": {
+                "type": "string"
+              },
+              "entries": {
+                "type": "integer"
+              },
+              "from": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "from",
+              "destination",
+              "entries"
+            ],
+            "type": "object"
+          },
+          "flags": [
+            {
+              "name": "from",
+              "help": "Path of the prompt_toolkit history file to read (the Python REPL kept it at ~/.miniclaude/history). The destination is the history file the REPL reads; the command refuses when it already exists.",
+              "value_schema": {
+                "type": "string"
+              },
+              "presence": "required"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "infra": {
+    "roots": [
+      {
+        "env_var": "XDG_STATE_HOME",
+        "default": "~/.local/state"
+      }
+    ]
+  }
+}
